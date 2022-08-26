@@ -4,6 +4,8 @@
 
 void	change_endianness(char *str);
 
+int	is_zero(t_tape a);
+
 int	compare(t_tape a, t_tape b);
 
 void	flip(t_tape *a);

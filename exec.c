@@ -21,14 +21,18 @@ void	change_endianness(char *str)
 	}
 }
 
+int	is_zero(t_tape a)
+{
+	return ((a.data[a.ptr] & a.mask) == 0);
+}
+
 int	compare(t_tape a, t_tape b)
 {
-	char	a_char, b_char;
+	char	A, B;
 
-	a_char = a.data[a.ptr] & a.mask;
-	b_char = b.data[b.ptr] & b.mask;
-	
-	return (a_char == b_char || (a_char != 0 && b_char != 0));
+	A = a.data[a.ptr] & a.mask;
+	B = b.data[b.ptr] & b.mask;
+	return (A == B || (A != 0 && B != 0));
 }
 
 void	flip(t_tape *a)
@@ -59,8 +63,8 @@ void	input(t_memory *m, t_tape *i)
 int main(int argc, char **argv)
 {
 	char mask = 1 << 0;
-	char c = 'a';
-	char new = mask ^ c;
+	char c = 1 << 0;
+	char new = mask & c;
 	printf("%d, %c\n", new, new);
 	return 0;
 }

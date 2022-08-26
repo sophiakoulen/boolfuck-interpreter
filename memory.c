@@ -21,6 +21,17 @@ void	init_memory(t_memory *m)
 	(m->left).ptr = -1;
 }
 
+void	free_tape(t_tape *a)
+{
+	free(a->data);
+}
+
+void	free_memory(t_memory *m)
+{
+	free_tape(&(m->left));
+	free_tape(&(m->right));
+}
+
 void    tape_up(t_tape *a)
 {
         if (a->mask != 1)

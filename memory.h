@@ -24,6 +24,10 @@ void	init_tape(t_tape *t, char *str);
 
 void	init_memory(t_memory *m);
 
+void	free_tape(t_tape *a);
+
+void	free_memory(t_memory *m);
+
 void    tape_up(t_tape *a);
 
 int     tape_down(t_tape *a);
