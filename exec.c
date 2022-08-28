@@ -1,24 +1,28 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "exec.h"
 #include "memory.h"
 
-void	change_endianness(char *str)
+char	*change_endianness(char *str)
 {
-	char	byte;
+	char	*ret;
+	int		j;
 
-	while (*str)
+	ret = calloc(strlen(str) + 1, sizeof(char));
+	j = 0;
+	while (str[j])
 	{
-		byte = 0;
+		ret[j] = 0;
 		for (int i = 0; i < 8; i++)
 		{
-			if(*str & (1 << i))
-				byte ^= (1 << (7 - i)); 	
+			if(str[j] & (1 << i))
+				ret[j] ^= (1 << (7 - i)); 	
 		}
-		*str = byte;
-		str++;		
+		j++;		
 	}
+	return (ret);
 }
 
 int	is_zero(t_tape a)
@@ -62,10 +66,10 @@ void	input(t_memory *m, t_tape *i)
 /*
 int main(int argc, char **argv)
 {
-	char mask = 1 << 0;
-	char c = 1 << 0;
-	char new = mask & c;
-	printf("%d, %c\n", new, new);
+	char s[] = "Hello";
+	char *s2 = change_endianness(s);
+	printf("%ld", strlen(s2));
+	free(s2);
 	return 0;
 }
 */

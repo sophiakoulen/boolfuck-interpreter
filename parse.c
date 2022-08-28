@@ -3,7 +3,7 @@
 
 typedef struct s_instruction
 {
-	char			val;
+	char					val;
 	struct s_instruction	*right;
 	struct s_instruction	*left;
 } t_instruction;

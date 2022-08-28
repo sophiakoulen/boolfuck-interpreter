@@ -38,7 +38,7 @@ void    tape_up(t_tape *a)
                 a->mask = (char)((unsigned char)a->mask >> 1);
         else
         {
-                if (a->ptr == a->size - 1)
+                if (a->ptr == a->size - 2)
                 {
                         a->data = realloc(a->data, 2 * a->size);
 			for (int i = a->size; i < 2 * a->size; i++)
